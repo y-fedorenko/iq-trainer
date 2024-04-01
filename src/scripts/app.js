@@ -21,10 +21,19 @@ gameEndSound.type = 'audio/mpeg';
 gameEndSound.volume = 1.0;
 
 
-let time = 10.0;
-let hitsCount = 0;
-let words = [...wordsList].sort(() => Math.random() - 0.5);
-let index = words.length - 1;
+
+let time;
+let hitsCount;
+let words;
+let index;
+
+function resetGame(){
+  time = 10;
+  words = [...wordsList].sort(() => Math.random() - 0.5);
+  hitsCount = 0;
+  index = words.length - 1;
+  input.value = '';
+}
 
 function startTimer() {
   timer.innerText = time.toFixed(0);
@@ -71,6 +80,7 @@ function StartButtonClicked() {
   startButton.classList.add('hidden');
   initialScreen.classList.add('hidden');
   finishScreen.classList.add('hidden');
+  resetGame();
   input.focus();  
   playWords();
   startTimer();
@@ -81,6 +91,9 @@ function gameEnded() {
   gameEndSound.play();
   backgroundSound.pause();
   finishScreen.classList.remove('hidden');
+  startButton.value = 'Restart';
+  startButton.classList.remove('hidden');
+  
 }
 
 startButton.addEventListener('click', StartButtonClicked);
@@ -88,6 +101,5 @@ startButton.addEventListener('click', StartButtonClicked);
 window.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     StartButtonClicked();
-
   }
 });

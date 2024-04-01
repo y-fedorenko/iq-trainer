@@ -11,7 +11,8 @@ html, body {
 
 main {
   height: 100svh;
-  background-color: #1976D2;
+  background-image: url('../media/backgroundimage1.jpg');
+  background-size: cover;
 }
 
 .initial-screen {
@@ -43,8 +44,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../media/backgroundimage1.jpg');
-  background-size: cover;
+
 }
 
 .box {
@@ -83,9 +83,10 @@ input[type="button"] {
   background-color: #FF5252;
   border-radius: 50%;
   box-shadow: inset 5px -5px 10px #ba3c3c, inset -5px 5px 10px #ff6868;
-  font-size: 50px;
+  font-size: 42px;
   color: #FFF;
   position: absolute;
+  z-index: 7;
 }
 
 .word-screen {
