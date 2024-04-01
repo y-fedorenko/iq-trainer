@@ -1,8 +1,8 @@
 @import url("./reset.css");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=PT+Sans:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Teko:wght@300..700&display=swap');
 
 * {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Orbitron", Arial, Helvetica, sans-serif;
 }
 
 html, body {
@@ -12,6 +12,25 @@ html, body {
 main {
   height: 100svh;
   background-color: #1976D2;
+}
+
+.initial-screen {
+  height: 100%;
+  width: 100%;
+  background-image: url('../media/backgroundimage3.jpg');
+  background-size: cover;
+  position: absolute;
+}
+
+.finish-screen {
+  height: 100%;
+  width: 100%;
+  background-image: url('../media/backgroundimage2.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
 }
 
 .hidden {
@@ -24,6 +43,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../media/backgroundimage1.jpg');
+  background-size: cover;
 }
 
 .box {
@@ -31,6 +52,7 @@ main {
 }
 
 .screen {
+  margin-top: 20px;
   height: 200px;
   width: 200px;
   background-color: #BBDEFB;
@@ -39,11 +61,20 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: #1976D2 2px solid;
 }
 
 h1 {
   color: #FF5252;
   text-align: center;
+  font-size: 72px;
+}
+
+h4 {
+  font-size: 22px;
+  text-align: left;
+  line-height: 60px;
+  padding-left: 10px;
 }
 
 input[type="button"] {
@@ -52,26 +83,35 @@ input[type="button"] {
   background-color: #FF5252;
   border-radius: 50%;
   box-shadow: inset 5px -5px 10px #ba3c3c, inset -5px 5px 10px #ff6868;
-
+  font-size: 50px;
+  color: #FFF;
   position: absolute;
 }
 
 .word-screen {
   margin-top: 20px;
   width: 200px;
+  border: #1976D2 3px solid;
+  height: 60px;
+  background-color: #FF5252;
+  border-radius: 5px;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 24px;
   text-align: center;
+  line-height: 60px;
 }
 
 
 input[type="text"] {
   width: 200px;
   background-color: #BBDEFB;
+  font-size: 24px;
+  font-weight: 500;
   margin-top: 20px;
-  height: 40px;
+  height: 60px;
   border-radius: 5px;
   padding-left: 10px;
+  border: #1976D2 3px solid;
 }

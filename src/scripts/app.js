@@ -3,11 +3,14 @@
 import Score from "./Score.js";
 import wordsList from "./wordlist.js";
 
-const screen = document.querySelector('.screen');
+const scoreScreen = document.querySelector('h4');
 const startButton = document.querySelector('#start');
 const input = document.querySelector('.input-box');
 const currentWord = document.querySelector('h2');
 const timer = document.querySelector('h1');
+const initialScreen = document.querySelector('#initial-screen');
+const finishScreen = document.querySelector('#finish-screen');
+
 
 const backgroundSound = new Audio('./src/media/backgroundsound.mp3');
 backgroundSound.type = 'audio/mpeg';
@@ -18,7 +21,7 @@ gameEndSound.type = 'audio/mpeg';
 gameEndSound.volume = 1.0;
 
 
-let time = 15.0;
+let time = 10.0;
 let hitsCount = 0;
 let words = [...wordsList].sort(() => Math.random() - 0.5);
 let index = words.length - 1;
@@ -27,8 +30,7 @@ function startTimer() {
   timer.innerText = time.toFixed(0);
   time -= 1; 
   if (time < 0) {
-    gameEndSound.play();
-    backgroundSound.pause();
+    gameEnded();
     return;
   }
   setTimeout(startTimer, 1000);
@@ -52,8 +54,9 @@ function playWords() {
   currentWord.innerText = word;
 
   function checkInput() {
-    if (input.value === word) {
+    if (input.value.toLowerCase() === word) {
       hitsCount += 1;
+      scoreScreen.innerText = `Your score: ${hitsCount}`;
       index -= 1;
       input.value = '';
       playSoundCorrect();
@@ -66,9 +69,25 @@ function playWords() {
 }
 function StartButtonClicked() {
   startButton.classList.add('hidden');
+  initialScreen.classList.add('hidden');
+  finishScreen.classList.add('hidden');
+  input.focus();  
   playWords();
+  startTimer();
   playSoundBackground();
 }
 
+function gameEnded() {
+  gameEndSound.play();
+  backgroundSound.pause();
+  finishScreen.classList.remove('hidden');
+}
+
 startButton.addEventListener('click', StartButtonClicked);
-startButton.addEventListener('click', startTimer);
+
+window.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    StartButtonClicked();
+
+  }
+});
