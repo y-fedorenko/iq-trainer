@@ -41,6 +41,10 @@ main {
   align-items: center;
 }
 
+h1 {
+  width: 50px;
+}
+
 input[type="button"] {
   height: 200px;
   width: 200px;
