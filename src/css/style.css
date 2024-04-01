@@ -42,7 +42,8 @@ main {
 }
 
 h1 {
-  width: 50px;
+  color: #FF5252;
+  text-align: center;
 }
 
 input[type="button"] {
