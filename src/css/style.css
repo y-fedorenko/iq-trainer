@@ -57,6 +57,7 @@ main {
 
 .leaderboard {
   top: 50px;
+  cursor: pointer;
 }
 
 .scoreboard {
@@ -86,11 +87,12 @@ h1 {
   font-size: 72px;
 }
 
-h4 {
+h4, p {
   font-size: 20px;
   text-align: center;
   line-height: 60px;
   padding-left: 8px;
+  color: white;
 }
 
 input[type="button"] {
@@ -131,4 +133,13 @@ input[type="text"] {
   border-radius: 5px;
   padding-left: 10px;
   border: #1976D2 3px solid;
+}
+
+dialog {
+  background-color: #BBDEFB;
+  position: fixed;
+  height: 500px;
+  width: 300px;
+  top: calc(50% - 250px);
+  left: calc(50% - 150px);
 }

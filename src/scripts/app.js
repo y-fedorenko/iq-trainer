@@ -10,6 +10,8 @@ const currentWord = document.querySelector('h2');
 const timer = document.querySelector('h1');
 const initialScreen = document.querySelector('#initial-screen');
 const finishScreen = document.querySelector('#finish-screen');
+const dialog = document.querySelector("dialog");
+const leaderboard = document.querySelector('.leaderboard');
 
 
 const backgroundSound = new Audio('./src/media/backgroundsound.mp3');
@@ -29,10 +31,12 @@ let time;
 let hitsCount;
 let words;
 let index;
+let isGameOn = false;
 const scoreList = [];
 
 function resetGame(){
-  time = 10;
+  isGameOn = true;
+  time = 99;
   words = [...wordsList].sort(() => Math.random() - 0.5);
   hitsCount = 0;
   index = words.length - 1;
@@ -62,10 +66,10 @@ function playSoundBackground() {
 
 function playWords() {
   const word = words[index];
-  currentWord.innerText = word;
+  currentWord.innerText = shuffleLetters(word);
   scoreScreen.innerText = `Your score: ${hitsCount}`;
   function checkInput() {
-    if (input.value.toLowerCase() === word) {
+    if ((input.value.toLowerCase() === word) && isGameOn) {
       hitsCount += 1;
       index -= 1;
       input.value = '';
@@ -76,6 +80,15 @@ function playWords() {
   }
 
   input.addEventListener('input', checkInput);
+}
+
+function shuffleLetters(word) {
+  let temp = word.split('');
+  temp.sort(() => Math.random() - 0.5);
+  if (temp.join('') === word) {
+    return shuffleLetters(word);
+  }
+  return temp.join('');
 }
 function StartButtonClicked() {
   startButton.classList.add('hidden');
@@ -89,16 +102,17 @@ function StartButtonClicked() {
 }
 
 function gameEnded() {
+  isGameOn = false;
   gameEndSound.play();
   backgroundSound.pause();
   finishScreen.classList.remove('hidden');
   startButton.value = 'Restart';
   startButton.classList.remove('hidden');
   recordScore();
+
 }
 
 startButton.addEventListener('click', StartButtonClicked);
-
 window.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     StartButtonClicked();
@@ -110,3 +124,14 @@ function recordScore() {
   score.record(new Date(), hitsCount, (hitsCount / words.length).toFixed(2));
   scoreList.push(score);
 }
+
+leaderboard.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+//closes by clicking ouside of the dialog box
+dialog.addEventListener('click', (event) => {
+  if (event.target === dialog) {
+    dialog.close();
+  }
+});
