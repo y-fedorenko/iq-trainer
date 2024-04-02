@@ -19,6 +19,9 @@ backgroundSound.volume = 0.5;
 const gameEndSound = new Audio('./src/media/gameendsound.mp3');
 gameEndSound.type = 'audio/mpeg';
 gameEndSound.volume = 1.0;
+const correctSound = new Audio('./src/media/correctsound.mp3');
+correctSound.type = 'audio/mpeg';
+correctSound.loop = false;
 
 
 
@@ -26,6 +29,7 @@ let time;
 let hitsCount;
 let words;
 let index;
+const scoreList = [];
 
 function resetGame(){
   time = 10;
@@ -47,9 +51,7 @@ function startTimer() {
 
 //The sounds are in separate functions so they can be played from start each time
 function playSoundCorrect() {
-  const correctSound = new Audio('./src/media/correctsound.mp3');
-  correctSound.type = 'audio/mpeg';
-  correctSound.loop = false;
+  correctSound.currentTime = 0;
   correctSound.play();
 }
 
@@ -61,11 +63,10 @@ function playSoundBackground() {
 function playWords() {
   const word = words[index];
   currentWord.innerText = word;
-
+  scoreScreen.innerText = `Your score: ${hitsCount}`;
   function checkInput() {
     if (input.value.toLowerCase() === word) {
       hitsCount += 1;
-      scoreScreen.innerText = `Your score: ${hitsCount}`;
       index -= 1;
       input.value = '';
       playSoundCorrect();
@@ -93,7 +94,7 @@ function gameEnded() {
   finishScreen.classList.remove('hidden');
   startButton.value = 'Restart';
   startButton.classList.remove('hidden');
-  
+  recordScore();
 }
 
 startButton.addEventListener('click', StartButtonClicked);
@@ -103,3 +104,9 @@ window.addEventListener('keydown', function(event) {
     StartButtonClicked();
   }
 });
+
+function recordScore() {
+  const score = new Score();
+  score.record(new Date(), hitsCount, (hitsCount / words.length).toFixed(2));
+  scoreList.push(score);
+}

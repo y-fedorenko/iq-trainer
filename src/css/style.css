@@ -46,6 +46,22 @@ main {
   align-items: center;
 
 }
+.top-nav {
+  position: relative;
+}
+
+.on-top {
+  position: absolute;
+  z-index: 10;
+}
+
+.leaderboard {
+  top: 50px;
+}
+
+.scoreboard {
+  top: 130px;
+}
 
 .box {
   display: block;
@@ -71,10 +87,10 @@ h1 {
 }
 
 h4 {
-  font-size: 22px;
-  text-align: left;
+  font-size: 20px;
+  text-align: center;
   line-height: 60px;
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 input[type="button"] {
