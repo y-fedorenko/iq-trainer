@@ -109,12 +109,13 @@ function gameEnded() {
   startButton.value = 'Restart';
   startButton.classList.remove('hidden');
   recordScore();
+  leaderboard.focus();
 
 }
 
 startButton.addEventListener('click', StartButtonClicked);
 window.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
+  if ((event.key === 'Enter') && (!isGameOn)) {
     StartButtonClicked();
   }
 });

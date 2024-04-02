@@ -60,7 +60,7 @@ const wordsList =
   "pan",
   "oven",
   "stove",
-  "sink",
+  "skin",
   "tub",
   "shower",
   "toilet",
