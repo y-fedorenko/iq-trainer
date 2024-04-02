@@ -65,6 +65,8 @@ function playSoundBackground() {
 }
 
 function playWords() {
+  if (index < 0) gameEnded();
+
   const word = words[index];
   currentWord.innerText = shuffleLetters(word);
   scoreScreen.innerText = `Your score: ${hitsCount}`;
@@ -78,7 +80,6 @@ function playWords() {
       playWords();
     }
   }
-
   input.addEventListener('input', checkInput);
 }
 
@@ -121,8 +122,7 @@ window.addEventListener('keydown', function(event) {
 });
 
 function recordScore() {
-  const score = new Score();
-  score.record(new Date(), hitsCount, (hitsCount / words.length).toFixed(2));
+  const score = new Score(new Date(), hitsCount, (hitsCount / words.length).toFixed(2));
   scoreList.push(score);
 }
 
