@@ -1,5 +1,6 @@
 @import url("./reset.css");
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Teko:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Orbitron:wght@400..900&family=Teko:wght@300..700&display=swap');
 
 * {
   font-family: "Orbitron", Arial, Helvetica, sans-serif;
@@ -53,15 +54,6 @@ main {
 .on-top {
   position: absolute;
   z-index: 10;
-}
-
-.leaderboard {
-  top: calc(50% - 340px);
-  cursor: pointer;
-}
-
-.scoreboard {
-  top: calc(50% - 270px);
 }
 
 .box {
@@ -118,6 +110,21 @@ input[type="button"] {
   border-radius: 5px;
 }
 
+.leaderboard {
+  top: calc(50% - 340px);
+  cursor: pointer;
+  background-color: #BBDEFB;
+  border: #1976D2 3px solid;
+  p {
+    color: #000;
+    font-weight: 500;
+  }
+}
+
+.scoreboard {
+  top: calc(50% - 270px);
+}
+
 h2 {
   font-size: 24px;
   text-align: center;
@@ -138,18 +145,27 @@ input[type="text"] {
 }
 
 dialog {
+  font-family: "Kode Mono", monospace;
   background-color: #BBDEFB;
   position: fixed;
-  height: 500px;
+
   width: 300px;
   top: calc(50% - 250px);
   left: calc(50% - 150px);
+  
 }
 
-p + p {
+dialog li {
+  font-family: "Kode Mono", monospace;
   line-height: 20px;
   font-size: 16px;
-  margin-top: 20px;
   text-align: left;
   color: #000;
+  text-align: center;
+}
+nav {
+  padding: 20px;
+}
+ul {
+  list-style-type: none;
 }
