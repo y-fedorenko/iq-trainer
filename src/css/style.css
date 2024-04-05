@@ -150,11 +150,10 @@ dialog {
   font-family: "Kode Mono", monospace;
   background-color: #BBDEFB;
   position: fixed;
-
   width: 300px;
   top: calc(50% - 250px);
   left: calc(50% - 150px);
-  
+  border: #1976D2 3px solid;
 }
 
 dialog li {
