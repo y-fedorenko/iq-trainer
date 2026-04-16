@@ -34,7 +34,7 @@ let scoreList = [];
 
 function resetGame(){
   isGameOn = true;
-  time = 15;
+  time = 90;
   words = [...wordsList].sort(() => Math.random() - 0.5);
   hitsCount = 0;
   index = words.length - 1;
